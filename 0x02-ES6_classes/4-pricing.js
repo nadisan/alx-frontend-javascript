@@ -4,11 +4,11 @@ export default class Pricing {
     constructor(amount, currency) {
       if (typeof amount !== 'number') {
         throw new TypeError('Amount must be a number');
-      } else if (!(currency instanceof currency)) {
+      } else if (!(currency instanceof Currency)) {
         throw new TypeError('Currency must be an instance of class Currency');
       }
   
-      this.amount = amount;
+      this._amount = amount;
       this._currency = currency;
     }
   
@@ -17,7 +17,7 @@ export default class Pricing {
     }
   
     get currency() {
-      return this._code;
+      return this._currency;
     }
   
     set amount(amount) {
@@ -35,7 +35,7 @@ export default class Pricing {
     }
   
     displayFullPrice() {
-      return `${this._amount} (${this._name}) (${this._currency.code})`;
+      return `${this._amount} (${this._currency.name}) (${this._currency.code})`;
     }
 
   static convertPrice(amount, conversionRate) {
